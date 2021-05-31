@@ -1,4 +1,5 @@
 # Ideas (think originality)
+
      # genres
         -fitness
         -music
@@ -7,11 +8,15 @@
         -finance
         -education
         -sports
+        -Flight Tracker/Status w/ aiport weather display
+
 # Project requirements
+
 Use a CSS framework other than Bootstrap.
-    (-foundation
-     -bulma
-     -uikit)
+(-foundation
+-bulma
+-uikit
+**_materialize_**)
 
 Be deployed to GitHub Pages.
 
@@ -44,4 +49,3 @@ Demo: Show your stuff!
 Directions for future development.
 
 Links to the deployed application and the GitHub repository.
-
