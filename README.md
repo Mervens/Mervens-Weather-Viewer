@@ -1,4 +1,5 @@
 # Ideas (think originality)
+
      # genres
         -fitness
         -music
@@ -7,20 +8,22 @@
         -finance
         -education
         -sports
-     #flight tracker
-     #events
-     #news 
+        -Flight Tracker/Status w/ aiport weather display
+        -event scheduling
 
 # Project requirements
+
 Use a CSS framework other than Bootstrap.
-    -materialize*
-   
+(-foundation
+-bulma
+-uikit
+**_materialize_**)
 
 Be deployed to GitHub Pages.
 
 Be interactive (i.e., accept and respond to user input).
 
-Use at least two server-side APIs.
+**Use at least two server-side APIs.**
 
 Does not use alerts, confirms, or prompts (use modals).
 
@@ -47,4 +50,3 @@ Demo: Show your stuff!
 Directions for future development.
 
 Links to the deployed application and the GitHub repository.
-
