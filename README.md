@@ -7,11 +7,14 @@
         -finance
         -education
         -sports
+     #flight tracker
+     #events
+     #news 
+
 # Project requirements
 Use a CSS framework other than Bootstrap.
-    (-foundation
-     -bulma
-     -uikit)
+    -materialize*
+   
 
 Be deployed to GitHub Pages.
 
