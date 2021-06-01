@@ -9,6 +9,7 @@
         -education
         -sports
         -Flight Tracker/Status w/ aiport weather display
+        -event scheduling
 
 # Project requirements
 
@@ -22,7 +23,7 @@ Be deployed to GitHub Pages.
 
 Be interactive (i.e., accept and respond to user input).
 
-Use at least two server-side APIs.
+**Use at least two server-side APIs.**
 
 Does not use alerts, confirms, or prompts (use modals).
 
