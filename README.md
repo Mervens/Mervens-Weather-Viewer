@@ -1,23 +1,19 @@
 # Ideas (think originality)
 
      # genres
-        -fitness
-        -music
-        -movie
-        -work
-        -finance
-        -education
-        -sports
         -Flight Tracker/Status w/ aiport weather display
-        -event scheduling
+          *input airport code then show the flights(airline,flight  # and time,   destination) for the day
+          *seperate link button for news/more info that generates a list of news articles 
+          *articles are links to article publisher site
+
+
+
+
 
 # Project requirements
 
 Use a CSS framework other than Bootstrap.
-(-foundation
--bulma
--uikit
-**_materialize_**)
+**_materialize_**
 
 Be deployed to GitHub Pages.
 
@@ -50,3 +46,42 @@ Demo: Show your stuff!
 Directions for future development.
 
 Links to the deployed application and the GitHub repository.
+
+# User Story
+
+AS a (type of user)
+I WANT (some goal)
+SO THAT (benefit)
+
+# Acceptance Criteria
+
+GIVEN some precondition
+WHEN I do some action
+THEN I expect some result
+
+# Project Metrics (grading)
+
+Concept
+Design
+Functionality
+Collaboration
+Presentation
+
+# lee message
+Project title and short description of MVP.
+  - Flight_Away 
+  - *input airport code then show the flights(airline,flight  # and time,   destination) for the day
+          *seperate link button for news/more info that generates a list of news articles 
+          *articles are links to article publisher site
+
+Have repository on GitHub, protected, with collaborators.
+  Done
+User story (for the overall project)
+  AS a travaler
+  I WANT flight informtion and the local news for the destination
+  SO I know all the available flights and the If there are major problems going on     in that destination 
+Wireframe and sketch of the design
+
+APIs identified (2)
+  gnews
+  aviation stack
