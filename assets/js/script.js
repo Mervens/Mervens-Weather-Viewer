@@ -14,16 +14,14 @@ function initPage() {
     
 
     const APIKey = "c9a9ed03a355403f4cb9a36e931c0b4a";
-//  When search button is clicked, read the city name typed by the user
 
     function getWeather(cityName) {
-//  Using saved city name, execute a current condition get request from open weather map api
+//  Begins the function by using cityName on the weather API application
         let queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + APIKey;
         axios.get(queryURL)
         .then(function(response){
             console.log(response);
-//  Parse response to display current conditions
-        //  Method for using "date" objects obtained from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
+//  Displays current conditions for city
             const currentDate = new Date(response.data.dt*1000);
             console.log(currentDate);
             const day = currentDate.getDate();
@@ -47,12 +45,16 @@ function initPage() {
             currentUVEl.innerHTML = "UV Index: ";
             currentUVEl.append(UVIndex);
         });
-//  Using saved city name, execute a 5-day forecast get request from open weather map api
+
+//  Collects response by user input to then use API and retrieve forecast
+
         let cityID = response.data.id;
         let forecastQueryURL = "https://api.openweathermap.org/data/2.5/forecast?id=" + cityID + "&appid=" + APIKey;
         axios.get(forecastQueryURL)
         .then(function(response){
-//  Parse response to display forecast for next 5 days underneath current conditions
+
+//  Now to display upcoming forecast
+
             console.log(response);
             const forecastEls = document.querySelectorAll(".forecast");
             for (i=0; i<forecastEls.length; i++) {
@@ -76,6 +78,9 @@ function initPage() {
                 const forecastHumidityEl = document.createElement("p");
                 forecastHumidityEl.innerHTML = "Humidity: " + response.data.list[forecastIndex].main.humidity + "%";
                 forecastEls[i].append(forecastHumidityEl);
+                const forecastWindEl = document.createElement("p");
+                forecastWindEl.innerHTML = "Wind Speed: " + response.data.list[forecastIndex].main.wind.speed + "MPH";
+                forecastEls[i].append(forecastWindEl); 
                 }
             })
         });  
@@ -102,7 +107,6 @@ function initPage() {
         historyEl.innerHTML = "";
         for (let i=0; i<searchHistory.length; i++) {
             const historyItem = document.createElement("input");
-            // <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com"></input>
             historyItem.setAttribute("type","text");
             historyItem.setAttribute("readonly",true);
             historyItem.setAttribute("class", "form-control d-block bg-white");
@@ -120,8 +124,7 @@ function initPage() {
     }
 
 
-//  Save user's search requests and display them underneath search form
-//  When page loads, automatically generate current conditions and 5-day forecast for the last city the user searched for
+//  Saved responses show upon reloading page
 
 }
 initPage();
