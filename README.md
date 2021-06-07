@@ -13,7 +13,7 @@ and the used API will retrieve the
 Temperature,  
 Wind Conditions,  
 and Humidity Forecast  
-![C6-3](https://user-images.githubusercontent.com/82620500/120958187-2d244080-c725-11eb-88e6-ad64cd40da49.png)
+![C6-3](https://user-images.githubusercontent.com/82620500/120958187-2d244080-c725-11eb-88e6-ad64cd40da49.png)  
 for the 5 upcoming day week of the city chosen.  
 
 This informaiton will be saved in localstorage so one can view their recent city searches.
