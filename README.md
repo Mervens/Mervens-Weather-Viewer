@@ -10,7 +10,7 @@ https://mervens.github.io/Mervens-Weather-Viewer/
 **Create a site that enables the user to input a city to a search bar,  ** 
 ![C6-2](https://user-images.githubusercontent.com/82620500/120958185-2bf31380-c725-11eb-8e58-5368428529a9.png)  
 and the used API will retrieve the  
-**Temperature,  **
+**Temperature,**  
 **Wind Conditions, ** 
 **and Humidity Forecast  **
 ![C6-3](https://user-images.githubusercontent.com/82620500/120958187-2d244080-c725-11eb-88e6-ad64cd40da49.png)  
