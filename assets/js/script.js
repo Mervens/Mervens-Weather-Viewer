@@ -82,11 +82,11 @@ function initPage() {
                 forecastHumidityEl.innerHTML = "Humidity: " + response.data.list[forecastIndex].main.humidity + "%";
                 forecastEls[i].append(forecastHumidityEl);
                 const forecastWindEl = document.createElement("p");
-                forecastWindEl.innerHTML = "Wind Speed: " + response.data.list[forecastIndex].main.wind.speed + "MPH";
-                forecastEls[i].append(forecastWindEl); 
+                forecastWindEl.innerHTML = "Wind Speed: " + response.data.list[forecastIndex].wind.speed + "MPH";
+                forecastEls[i].append(forecastWindEl);
                 }
             })
-        });  
+        });  S
     }
 
     searchEl.addEventListener("click",function() {
