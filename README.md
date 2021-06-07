@@ -1,9 +1,11 @@
 # Mervens Victor: Weather-Viewer
 
+![Deployed Application Screenie](https://github.com/Mervens/Weather-Dashboard/blob/master/assets/images/weather-dashboard-snip.JPG)
 
-See the deployed app here:
+
+Visit the site at this link:
 https://mervens.github.io/Weather-Dashboard/
 
 # Project Description
 
-![Screenshot of weather dashboard](https://github.com/Mervens/Weather-Dashboard/blob/master/assets/images/weather-dashboard-snip.JPG)
+
