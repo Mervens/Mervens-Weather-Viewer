@@ -4,7 +4,7 @@
 
 
 Visit the site at this link:
-https://mervens.github.io/Mervens-Weather-Dashboard/
+https://mervens.github.io/Mervens-Weather-Viewer/
 
 ## Project Description
 Create a site that enables the user to input a city to a search bar,  
