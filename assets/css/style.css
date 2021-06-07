@@ -3,7 +3,7 @@
 }
 
 .search-header {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: bold;
 }
 
@@ -13,4 +13,8 @@
 
 .forecast-date {
     font-size: 18px;
+}
+
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
