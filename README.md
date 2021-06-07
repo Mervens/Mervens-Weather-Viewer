@@ -16,5 +16,5 @@ and Humidity Forecast
 ![C6-3](https://user-images.githubusercontent.com/82620500/120958187-2d244080-c725-11eb-88e6-ad64cd40da49.png)  
 for the 5 upcoming day week of the city chosen.  
 
-This informaiton will be saved in localstorage so one can view their recent city searches.
+This information will be saved in localstorage so one can view their recent city searches.
 ![C6-4](https://user-images.githubusercontent.com/82620500/120958189-2dbcd700-c725-11eb-913c-df9afe36f0a4.png)
