@@ -13,14 +13,17 @@ function initPage() {
     console.log(searchHistory);
     
 
-    const APIKey = "c9a9ed03a355403f4cb9a36e931c0b4a";
+    const APIKey = "74f8529dfd7d6450ad96fc23b67934d2";
 
     function getWeather(cityName) {
+
 //  Begins the function by using cityName on the weather API application
+
         let queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + APIKey;
         axios.get(queryURL)
         .then(function(response){
             console.log(response);
+
 //  Displays current conditions for city
             const currentDate = new Date(response.data.dt*1000);
             console.log(currentDate);
@@ -53,7 +56,7 @@ function initPage() {
         axios.get(forecastQueryURL)
         .then(function(response){
 
-//  Now to display upcoming forecast
+//  Now to display upcoming forecast.
 
             console.log(response);
             const forecastEls = document.querySelectorAll(".forecast");

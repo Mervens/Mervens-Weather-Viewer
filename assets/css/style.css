@@ -18,3 +18,15 @@ body {
 .forecast-date {
     font-size: 18px;
 }
+
+.footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 30px;
+    line-height: 30px; 
+    color: white;
+    text-align: center;
+    font-size: 14px;
+  }
