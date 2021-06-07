@@ -1,6 +1,6 @@
 # Mervens Victor: Weather-Viewer
 
-![Deployed Application Screenie](https://github.com/Mervens/Weather-Dashboard/blob/master/assets/images/weather-dashboard-snip.JPG)
+![Deployed Application Screenie](https://github.com/Mervens/Weather-Dashboard/blob/master/assets/images/C6-1.JPG)
 
 
 Visit the site at this link:
