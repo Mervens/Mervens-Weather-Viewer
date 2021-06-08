@@ -1,14 +1,19 @@
-/* Custom Stylesheet */
-/**
- * Use this file to override Materialize files so you can update
- * the core Materialize files in the future
- *
- * Made By MaterializeCSS.com
- */
-
 .icon-block {
   padding: 0 15px;
 }
 .icon-block .material-icons {
 	font-size: inherit;
+}
+
+body {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.navbar-brand {
+  font-size: 36px;
+}
+
+.search-header {
+  font-size: 22px;
+  font-weight: bold;
 }
