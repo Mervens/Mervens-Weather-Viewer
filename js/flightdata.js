@@ -6,12 +6,13 @@ var flightSlots = document.getElementById("download-button");
 // Variables to keep
 var hash = "access_key=948e51626aced42c9950bda71c9c1676";
 var destCity;
-var returnData;
-
+let returnData;
 // Function list
 function getDestCity() {
   destCity = document.getElementById("city-input").value.toLowerCase().trim();
-  console.log(destCity);
+  document.querySelector(".icon-block").setAttribute("class", "hide");
+  document.createElement("div").setAttribute("class", "card-panel");
+
   getFlightData();
 }
 
@@ -34,11 +35,28 @@ var getFlightData = function () {
         hash;
       const response2 = await fetch(flightURL);
       response2.json().then(function (flightData) {
-        returnData = flightData;
-        console.log(flightData);
+        console.log(flightData.data[0]);
+        flightData.data.forEach((element) => {
+          var help = document.createElement("div");
+          help.setAttribute(
+            "class",
+            "card",
+            "blue-text",
+            "md4",
+            "row",
+            "hoverable"
+          );
+          var me = document.createTextNode(element.airline.name);
+          help.appendChild(me);
+          document.getElementById("insert-card").appendChild(help);
+          // console.log("Airline: " + element.airline.name);
+          // console.log("Departure: " + element.departure.airport);
+          // console.log("Arrival: " + element.arrival.time);
+          // console.log("Flight: " + element.flight.number);
+        });
       });
     });
-    addFlight();
+    // addFlight();
   });
 };
 
@@ -46,9 +64,6 @@ var getFlightData = function () {
 
 function addFlight() {
   // var newFlight = document.getElementById("airline1");
-  // var newAirport = document.getElementById("departure1");
-  // var newArrival = document.getElementById("arrival1");
-  // var newTerminal = document.getElementById("terminal1");
   // newFlight.textContent = returnData.data[23].airline.name;
   // newAirport.textContent = returnData.data[23].departure.airport;
   // newArrival.textContent = returnData.data[23].arrival.time;
