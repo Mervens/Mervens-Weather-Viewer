@@ -17,3 +17,14 @@ body {
   font-size: 22px;
   font-weight: bold;
 }
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.scontainer {
+  display:flex;
+}
