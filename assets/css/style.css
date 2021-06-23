@@ -27,6 +27,13 @@ body {
     font-size: 28px;
 }
 
+hr {
+    border: none;
+    height: 3px;
+    color: #333; 
+    background-color: #333;
+}
+
 .forecast-date {
     font-size: 18px;
 }

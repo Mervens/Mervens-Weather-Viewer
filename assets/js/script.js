@@ -10,8 +10,8 @@ function initPage() {
 
     var searEl = document.getElementById("search-button");
 
-    let searchHistory = JSON.parse(localStorage.getItem("search")) || [];
-    console.log(searchHistory);
+    var searHist = JSON.parse(localStorage.getItem("search")) || [];
+    console.log(searHist);
     
     const APIKey = "74f8529dfd7d6450ad96fc23b67934d2";
 
@@ -31,9 +31,8 @@ function initPage() {
 function getWeather(cityName) {
 //  Begins the function by using cityName on the weather API application
 
-        let queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=imperial" + "&appid=" + APIKey;
+        var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=imperial" + "&appid=" + APIKey;
         axios.get(queryURL)
-        
         .then(function(response){
             console.log(response);
 
@@ -44,20 +43,20 @@ function getWeather(cityName) {
             var month = currD.getMonth() + 1;
             var year = currD.getFullYear();
             //latititude/longitude definition
-            let lat = response.data.coord.lat;
-            let lon = response.data.coord.lon;
-            let UVQueryURL = "https://api.openweathermap.org/data/2.5/uvi/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + APIKey + "&cnt=1";
-            axios.get(UVQueryURL)
+            var lat = response.data.coord.lat;
+            var lon = response.data.coord.lon;
+            var UVURL = "https://api.openweathermap.org/data/2.5/uvi/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + APIKey + "&cnt=1";
+            axios.get(UVURL)
             .then(function(response){
-                let UVIndex = document.createElement("span");
-                UVIndex.setAttribute("class","badge badge-warning");
-                UVIndex.innerHTML = response.data[0].value;
+                var UVLi = document.createElement("span");
+                UVLi.setAttribute("class","badge badge-warning");
+                UVLi.innerHTML = response.data[0].value;
                 currUVEl.innerHTML = "UV Index: ";
-                currUVEl.append(UVIndex);
+                currUVEl.append(UVLi);
             });
 
             name.innerHTML = response.data.name + " (" + month + "/" + day + "/" + year + ") ";
-            let weatherPic = response.data.weather[0].icon;
+            var weatherPic = response.data.weather[0].icon;
             currPEl.setAttribute("src","https://openweathermap.org/img/wn/" + weatherPic + "@2x.png");
             currPEl.setAttribute("alt", response.data.weather[0].description);
             currTEl.innerHTML = "Temperature: " + response.data.main.temp + "&#176F";
@@ -68,84 +67,83 @@ function getWeather(cityName) {
 
 //  Collects response by user input to then use API and retrieve forecast
 
-        let cityID = response.data.id;
-
+        var cityID = response.data.id;
         //5 Day Forecast link/city/unit
-        let forecastQueryURL = "https://api.openweathermap.org/data/2.5/forecast?id=" + cityID + "&units=imperial" + "&appid=" + APIKey;
-        axios.get(forecastQueryURL)
+        var fcURL = "https://api.openweathermap.org/data/2.5/forecast?id=" + cityID + "&units=imperial" + "&appid=" + APIKey;
+        axios.get(fcURL)
         .then(function(response){
 
 //  Now to display upcoming forecast.
 
             console.log(response);
-            const forecastEls = document.querySelectorAll(".forecast");
-            for (i=0; i<forecastEls.length; i++) {
-                forecastEls[i].innerHTML = "";
+            var fcEls = document.querySelectorAll(".forecast");
+            for (i=0; i<fcEls.length; i++) {
+                fcEls[i].innerHTML = "";
 
-                const forecastIndex = i*8 + 4;
-                const forecastDate = new Date(response.data.list[forecastIndex].dt * 1000);
-                const forecastDay = forecastDate.getDate();
-                const forecastMonth = forecastDate.getMonth() + 1;
-                const forecastYear = forecastDate.getFullYear();
+                var fcInd = i*8 + 4;
+                var fcDate = new Date(response.data.list[fcInd].dt * 1000);
+                var fcDay = fcDate.getDate();
+                var fcMonth = fcDate.getMonth() + 1;
+                var fcYear = fcDate.getFullYear();
                 //Date
-                const forecastDateEl = document.createElement("p");
-                forecastDateEl.setAttribute("class","mt-3 mb-0 forecast-date");
-                forecastDateEl.innerHTML = forecastMonth + "/" + forecastDay + "/" + forecastYear;
-                forecastEls[i].append(forecastDateEl);
+                var fcDate = document.createElement("p");
+                fcDate.setAttribute("class","mt-3 forecast-date");
+                fcDate.innerHTML = fcMonth + "/" + fcDay + "/" + fcYear;
+                fcEls[i].append(fcDate);
                 //Weather Icon
-                const forecastWeatherEl = document.createElement("img");
-                forecastWeatherEl.setAttribute("src","https://openweathermap.org/img/wn/" + response.data.list[forecastIndex].weather[0].icon + "@2x.png");
-                forecastWeatherEl.setAttribute("alt",response.data.list[forecastIndex].weather[0].description);
-                forecastEls[i].append(forecastWeatherEl);
+                var fcWeather = document.createElement("img");
+                fcWeather.setAttribute("src","https://openweathermap.org/img/wn/" + response.data.list[fcInd].weather[0].icon + "@2x.png");
+                fcWeather.setAttribute("alt",response.data.list[fcInd].weather[0].description);
+                fcEls[i].append(fcWeather);
                 //Temp
-                const forecastTempEl = document.createElement("p");
-                forecastTempEl.innerHTML = "Temp: " + response.data.list[forecastIndex].main.temp + "&#176F";
-                forecastEls[i].append(forecastTempEl);
+                var fcTemp = document.createElement("p");
+                fcTemp.innerHTML = "Temp: " + response.data.list[fcInd].main.temp + "&#176F";
+                fcEls[i].append(fcTemp);
                 //Humidity
-                const forecastHumidityEl = document.createElement("p");
-                forecastHumidityEl.innerHTML = "Humidity: " + response.data.list[forecastIndex].main.humidity + "%";
-                forecastEls[i].append(forecastHumidityEl);
+                var fcHumidity = document.createElement("p");
+                fcHumidity.innerHTML = "Humidity: " + response.data.list[fcInd].main.humidity + "%";
+                fcEls[i].append(fcHumidity);
                 //WindSpeed
-                const forecastWindEl = document.createElement("p");
-                forecastWindEl.innerHTML = "Wind Speed: " + response.data.list[forecastIndex].wind.speed + "MPH";
-                forecastEls[i].append(forecastWindEl);
+                var fcWind = document.createElement("p");
+                fcWind.innerHTML = "Wind Speed: " + response.data.list[fcInd].wind.speed + "MPH";
+                fcEls[i].append(fcWind);
                 }
             })
         }); 
     }
 
     searEl.addEventListener("click",function() {
-        const searchTerm = inpEl.value;
-        getWeather(searchTerm);
-        searchHistory.push(searchTerm);
-        localStorage.setItem("search", JSON.stringify(searchHistory));
-        renderSearchHistory();
+        var searVal = inpEl.value;
+        getWeather(searVal);
+        searHist.push(searVal);
+
+        localStorage.setItem("search", JSON.stringify(searHist));
+        renderSearchHist();
     })
 
-    clear.addEventListener("click",function() {
-        searchHistory = [];
-        renderSearchHistory();
-    })
-
-    function renderSearchHistory() {
+    function renderSearchHist() {
         //Search history list
         histEl.innerHTML = "";
-        for (let i=0; i<searchHistory.length; i++) {
-            //for searchHistory(length) = with each input create block
+        for (var i=0; i<searHist.length; i++) {
+            //for searHist(length) = with each input create block
             var history = document.createElement("input");
-            history.setAttribute("type","text");
-            history.setAttribute("readonly",true);
-            history.setAttribute("class", "form-control d-block bg-white");
-            history.setAttribute("value", searchHistory[i]);
+            history.setAttribute("value", searHist[i]);
+            history.setAttribute("class", "d-block form-control bg-white");
             history.addEventListener("click",function() {
                 getWeather(history.value);
             })
             histEl.append(history);
         }
     }
-    renderSearchHistory();
-    if (searchHistory.length > 0) {
-        getWeather(searchHistory[searchHistory.length - 1]);
+    
+    clear.addEventListener("click",function() {
+        searHist = [];
+        renderSearchHist();
+    })
+
+    renderSearchHist();
+    if (searHist.length > 0) {
+        getWeather(searHist[searHist.length - 1]);
     }
 
 
