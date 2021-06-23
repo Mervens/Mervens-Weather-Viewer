@@ -6,6 +6,15 @@ function initPage() {
 
     var name = document.getElementById("city-name");
 
+    var inpEl = document.getElementById("city-input");
+
+    var searEl = document.getElementById("search-button");
+
+    let searchHistory = JSON.parse(localStorage.getItem("search")) || [];
+    console.log(searchHistory);
+    
+    const APIKey = "74f8529dfd7d6450ad96fc23b67934d2";
+
     var currPEl = document.getElementById("current-pic");
 
     var currTEl = document.getElementById("temperature");
@@ -18,21 +27,13 @@ function initPage() {
 
     var histEl = document.getElementById("history");
 
-    var inpEl = document.getElementById("city-input");
 
-    var searEl = document.getElementById("search-button");
-
-    let searchHistory = JSON.parse(localStorage.getItem("search")) || [];
-    console.log(searchHistory);
-    const APIKey = "74f8529dfd7d6450ad96fc23b67934d2";
-
-
-    function getWeather(cityName) {
-
+function getWeather(cityName) {
 //  Begins the function by using cityName on the weather API application
 
         let queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + APIKey;
         axios.get(queryURL)
+        
         .then(function(response){
             console.log(response);
 
@@ -46,7 +47,7 @@ function initPage() {
             name.innerHTML = response.data.name + " (" + month + "/" + day + "/" + year + ") ";
             let weatherPic = response.data.weather[0].icon;
             currPEl.setAttribute("src","https://openweathermap.org/img/wn/" + weatherPic + "@2x.png");
-            currPEl.setAttribute("alt",response.data.weather[0].description);
+            currPEl.setAttribute("alt", response.data.weather[0].description);
             currTEl.innerHTML = "Temperature: " + k2f(response.data.main.temp) + " &#176F";
             currHEl.innerHTML = "Humidity: " + response.data.main.humidity + "%";
             currWEl.innerHTML = "Wind Speed: " + response.data.wind.speed + " MPH";
@@ -145,7 +146,6 @@ function initPage() {
             histEl.append(history);
         }
     }
-
     renderSearchHistory();
     if (searchHistory.length > 0) {
         getWeather(searchHistory[searchHistory.length - 1]);
