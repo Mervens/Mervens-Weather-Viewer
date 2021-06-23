@@ -43,6 +43,18 @@ function getWeather(cityName) {
             var day = currD.getDate();
             var month = currD.getMonth() + 1;
             var year = currD.getFullYear();
+            //latititude/longitude definition
+            let lat = response.data.coord.lat;
+            let lon = response.data.coord.lon;
+            let UVQueryURL = "https://api.openweathermap.org/data/2.5/uvi/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + APIKey + "&cnt=1";
+            axios.get(UVQueryURL)
+            .then(function(response){
+                let UVIndex = document.createElement("span");
+                UVIndex.setAttribute("class","badge badge-warning");
+                UVIndex.innerHTML = response.data[0].value;
+                currUVEl.innerHTML = "UV Index: ";
+                currUVEl.append(UVIndex);
+            });
 
             name.innerHTML = response.data.name + " (" + month + "/" + day + "/" + year + ") ";
             let weatherPic = response.data.weather[0].icon;
@@ -52,18 +64,7 @@ function getWeather(cityName) {
             currHEl.innerHTML = "Humidity: " + response.data.main.humidity + "%";
             currWEl.innerHTML = "Wind Speed: " + response.data.wind.speed + " MPH";
 
-        let lat = response.data.coord.lat;
-        let lon = response.data.coord.lon;
-        let UVQueryURL = "https://api.openweathermap.org/data/2.5/uvi/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + APIKey + "&cnt=1";
-        axios.get(UVQueryURL)
 
-        .then(function(response){
-            let UVIndex = document.createElement("span");
-            UVIndex.setAttribute("class","badge badge-danger");
-            UVIndex.innerHTML = response.data[0].value;
-            currUVEl.innerHTML = "UV Index: ";
-            currUVEl.append(UVIndex);
-        });
 
 //  Collects response by user input to then use API and retrieve forecast
 
@@ -149,6 +150,6 @@ function getWeather(cityName) {
 
 
 //  Saved responses show upon reloading page
-
 }
+
 initPage();

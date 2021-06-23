@@ -8,15 +8,7 @@ body {
 
 .search-header {
     font-size: 22px;
-    font-weight: bold;
-}
-
-.city-name {
-    font-size: 28px;
-}
-
-.forecast-date {
-    font-size: 18px;
+    font-style: italic;
 }
 
 .footer {
@@ -30,3 +22,11 @@ body {
     text-align: center;
     font-size: 14px;
   }
+  
+.city-name {
+    font-size: 28px;
+}
+
+.forecast-date {
+    font-size: 18px;
+}
