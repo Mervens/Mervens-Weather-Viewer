@@ -31,24 +31,24 @@ function initPage() {
 function getWeather(cityName) {
 //  Begins the function by using cityName on the weather API application
 
-        let queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + APIKey;
+        let queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=imperial" + "&appid=" + APIKey;
         axios.get(queryURL)
         
         .then(function(response){
             console.log(response);
 
 //  Displays current conditions for city
-            const currD = new Date(response.data.dt*1000);
+            var currD = new Date(response.data.dt*1000);
             console.log(currD);
-            const day = currD.getDate();
-            const month = currD.getMonth() + 1;
-            const year = currD.getFullYear();
+            var day = currD.getDate();
+            var month = currD.getMonth() + 1;
+            var year = currD.getFullYear();
 
             name.innerHTML = response.data.name + " (" + month + "/" + day + "/" + year + ") ";
             let weatherPic = response.data.weather[0].icon;
             currPEl.setAttribute("src","https://openweathermap.org/img/wn/" + weatherPic + "@2x.png");
             currPEl.setAttribute("alt", response.data.weather[0].description);
-            currTEl.innerHTML = "Temperature: " + k2f(response.data.main.temp) + " &#176F";
+            currTEl.innerHTML = "Temperature: " + response.data.main.temp + "&#176F";
             currHEl.innerHTML = "Humidity: " + response.data.main.humidity + "%";
             currWEl.innerHTML = "Wind Speed: " + response.data.wind.speed + " MPH";
 
@@ -68,8 +68,9 @@ function getWeather(cityName) {
 //  Collects response by user input to then use API and retrieve forecast
 
         let cityID = response.data.id;
-        //let 
-        let forecastQueryURL = "https://api.openweathermap.org/data/2.5/forecast?id=" + cityID + "&appid=" + APIKey;
+
+        //5 Day Forecast link/city/unit
+        let forecastQueryURL = "https://api.openweathermap.org/data/2.5/forecast?id=" + cityID + "&units=imperial" + "&appid=" + APIKey;
         axios.get(forecastQueryURL)
         .then(function(response){
 
@@ -97,7 +98,7 @@ function getWeather(cityName) {
                 forecastEls[i].append(forecastWeatherEl);
                 //Temp
                 const forecastTempEl = document.createElement("p");
-                forecastTempEl.innerHTML = "Temp: " + k2f(response.data.list[forecastIndex].main.temp) + " &#176F";
+                forecastTempEl.innerHTML = "Temp: " + response.data.list[forecastIndex].main.temp + "&#176F";
                 forecastEls[i].append(forecastTempEl);
                 //Humidity
                 const forecastHumidityEl = document.createElement("p");
@@ -125,10 +126,6 @@ function getWeather(cityName) {
         renderSearchHistory();
     })
 
-    function k2f(K) {
-        return Math.floor((K - 273.15) *1.8 +32);
-    }
-
     function renderSearchHistory() {
         //Search history list
         histEl.innerHTML = "";
@@ -142,7 +139,6 @@ function getWeather(cityName) {
             history.addEventListener("click",function() {
                 getWeather(history.value);
             })
-
             histEl.append(history);
         }
     }
