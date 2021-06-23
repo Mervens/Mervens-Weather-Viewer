@@ -3,7 +3,7 @@ body {
 }
 
 .navbar-brand {
-    font-size: 36px;
+    font-size: 30px;
 }
 
 .search-header {
@@ -12,7 +12,7 @@ body {
 }
 
 .city-name {
-    font-size: 30px;
+    font-size: 28px;
 }
 
 .forecast-date {
@@ -24,7 +24,7 @@ body {
     left: 0;
     bottom: 0;
     width: 100%;
-    height: 30px;
+    height: auto;
     line-height: 30px; 
     color: white;
     text-align: center;
